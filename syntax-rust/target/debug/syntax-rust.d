@@ -1,1 +1,1 @@
-C:\Users\rajaa\Documents\rust-learning\syntax-rust\target\debug\syntax-rust.exe: C:\Users\rajaa\Documents\rust-learning\syntax-rust\src\main.rs
+/Users/aruntdengine/Rust-Course-/syntax-rust/target/debug/syntax-rust: /Users/aruntdengine/Rust-Course-/syntax-rust/src/main.rs

@@ -104,9 +104,38 @@ fn main() {
    *r -= 3; 
    println!("r : {:?}",r);
    println!("x : {:?}",x); 
-   
+   let mut account: bank_account = bank_account{
+      balance: 1000.0, 
+      owner: "John".to_string(),
+         };
+         //Immutable borrow to check the balance 
+         account.check_balance();
+
+         //Mutable Borrow to withdraw moeny from the account 
+         account.withdraw(45.5);
+
+         //Immutable borrow to check the balance again
+         account.check_balance();
+
 }
 
+struct bank_account{
+   balance: f64,
+   owner: String,
+}
+
+impl bank_account{
+   fn withdraw(&mut self, amount: f64)
+   {
+      println!("withdrawing {} from the account",amount);
+      self.balance -= amount;
+   }
+   fn check_balance(&self)
+   {
+      println!("the balance of the account is {}",self.balance);
+      println!("the owner of the account is {}",self.owner);
+   }
+} 
 fn hello_world() {
    println!("Hello World");
 
