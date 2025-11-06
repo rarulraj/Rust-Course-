@@ -10,6 +10,10 @@
 //examples : fn hello_world 
 //Do not use kebab case 
 
+//Constants are immutable by default 
+//Constants cannot use the mut keyword 
+
+const X: i32 = 0;
 
 fn main() {
    let numbers: [i32;5] = [1,2,3,4,5];
@@ -116,6 +120,32 @@ fn main() {
 
          //Immutable borrow to check the balance again
          account.check_balance();
+   //Variables and mutability
+   println!("Hello World");
+   let a : i32 = 10;
+   println!("the value of a is {}",a);
+   let mut b : i32 = 20;
+   println!("the value of b is {}",b);
+   b = 30;
+   println!("the value of b is {}",b);
+
+   //constants are immutable by default 
+   //constants cannot use the mut keyword 
+   //consts must be assigned a type at the time of declaration
+   //conts must be capital letter by default 
+   const Y: i32 = 0;
+   println!("the value of y is {}",Y);
+   println!("the value of x is {}",X);
+
+   //Shadowing 
+   let x = 5;
+   let x = x + 1;
+   let x = x * 2;
+   println!("the value of shadowed x is {}",x);
+   let spaces = "   ";
+   let spaces = spaces.len();
+   println!("the value of spaces is {}",spaces);
+
 
 }
 
@@ -254,5 +284,29 @@ fn calculate_lengthTwo(s: &String) -> usize{
 //mutable reference can be modified but not immutable reference
 //mutable reference can be modified but not immutable reference
 //create reference by using & symbol
+
+ //VAriables and mutability 
+ //--------------------------------
+ //Variables are immutable by default 
+ //Variables can be made mutable by using the mut keyword
+ //Variables can be made mutable by using the mut keyword 
+
+ //Shadowing 
+ //If you create a new variable with the same name as a previous variable, the previous variable is shadowed.
+ //The previous variable is no longer accessible.
+//THIS IS DIFFERENT THAN MARKING A VARIABLE AS MUTABLE
+
+//Comments in rust 
+//one line comment 
+
+//multi line comment 
+/*
+This is a multi line comment
+This is a multi line comment
+*/
+/* 
+everything in the comment is ignored by the compiler
+*/
+
 
  
