@@ -230,9 +230,22 @@ fn main() {
 // };
 // println!("my user is {}",my_user.username);
 
+
+//Enum 
+//Enum are used to represent a set of possible values
+
+   #[derive(Debug)]
+   enum IpAddrKind{
+      V4(String),
+      V6(String),
+   }
+
+   let home = IpAddrKind::V4(String::from("127.0.0.1"));
+   let loopback = IpAddrKind::V6(String::from("::1"));
+   println!("home is {:?}",home);
+   println!("loopback is {:?}",loopback);
+
 }
-
-
 
 
 struct BankAccount{
