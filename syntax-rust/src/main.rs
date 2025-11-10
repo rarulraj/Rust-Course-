@@ -10,6 +10,9 @@
 //examples : fn hello_world 
 //Do not use kebab case 
 
+//Structs
+//Structs are used to name and package related values together together 
+//Each field in a struct is named and has a type
 
 fn main() {
 
@@ -178,7 +181,59 @@ fn main() {
    *r -= 3; 
    println!("r : {:?}",r);
    println!("x : {:?}",x); 
+
+   struct Book
+   {
+      title: String,
+      author: String,
+      pages: u32,
+      available: bool,
+
+   }
+   
+   struct User
+   {
+      active : bool,
+      username : String,
+      email : String,
+      sign_in_count : u64,
+   }
+
+   let mut my_user = User{
+      active: true,
+      username: String::from("John"),
+      email: String::from("john@example.com"),
+      sign_in_count: 1,
+   };
+
+   println!("my user is {}",my_user.username);
+   my_user.username = String::from("Jane");
+   println!("my user is {}",my_user.username);
+
+//    //Can also return a struct from a function
+//    fn build_user(username: String, email: String) -> User
+// {
+//     User{
+//       active: true,
+//       username: username,
+//       email: email,
+//       sign_in_count: 1,
+//    }
+// }
+
+// //Can also define struct within instance of a struct
+// let my_user = User{
+//    active: true,
+//    username: String::from("John"),
+//    email: String::from("john@example.com"),
+//    sign_in_count: 1,
+// };
+// println!("my user is {}",my_user.username);
+
 }
+
+
+
 
 struct BankAccount{
    owner: String,
