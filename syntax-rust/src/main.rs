@@ -10,12 +10,82 @@
 //examples : fn hello_world 
 //Do not use kebab case 
 
-//Constants are immutable by default 
-//Constants cannot use the mut keyword 
-
-const X: i32 = 0;
 
 fn main() {
+
+   //If and else expressions 
+   //an if expression allows you to branch your code depending on a condition 
+   //if the condition is true, the code inside the if block will be executed
+   //if the condition is false, the code inside the else block will be executed
+   //if the condition is false, the code inside the else block will be executed
+
+   let age: u32 = 20;
+   if age >= 18 {
+      println!("You are an adult");
+   } else {
+      println!("You are not an adult");
+   }
+   //Soemtimes you want to check multiple conds 
+   //you can use else if to check multiple conditions
+
+   let ageTwo : u32 = 15;
+   if ageTwo >= 18 {
+      println!("You are an adult");
+   } else if ageTwo >= 13 {
+      println!("You are a teenager");
+   } else {
+      println!("You are a child");
+   }
+   //Using if in let statements 
+   let is_adult: bool = if age >= 18 {true} else {false};
+   println!("Is adult: {}",is_adult);
+   //Loops in Rust
+   //Loops are used to repeat a block of code multiple times
+   //Loops are used to iterate over a collection of elements
+   loop{
+      println!("Hello World");
+      break; //break is used to exit a loop
+   }
+   //One of the uses of a loop is to retry an operation that might fails 
+   let mut count = 0;
+   loop{
+      count += 1;
+      println!("Count: {}",count);
+      if count == 10 {
+         break;
+      }
+   }
+   //Loop labels 
+   //Loop labels are used to label a loop
+   //Loop labels are used to jump to a labeled loop
+   //Loop labels are used to break out of a labeled loop
+   'outer: loop{
+      println!("Outer loop");
+      'inner: loop{
+         println!("Inner loop");
+         break 'outer;
+      }
+   }
+   //While loops in rust 
+   //While loops are used to repeat a block of code while a condition is true
+   //While loops are used to iterate over a collection of elements
+   let mut countTwo = 0;
+   while countTwo < 10 {
+      println!("Count: {}",countTwo);
+      countTwo += 1;
+   }
+   //for loops in rust 
+   //For loops are used to iterate over a collection of elements
+   //For loops are used to iterate over a collection of elements
+   for i in 0..10 {
+      println!("For loop Count: {}",i);
+   }
+   
+   //While loops can also be used to iterate over a collection of element
+   //For loops in rust 
+   //For loops are used to iterate over a collection of elements
+   //For loops are used to iterate over a collection of elements
+
    let numbers: [i32;5] = [1,2,3,4,5];
    println!("Numbers Array: {:?}",numbers);
    //let mix = [1,2,3,"apple",true];
@@ -108,64 +178,33 @@ fn main() {
    *r -= 3; 
    println!("r : {:?}",r);
    println!("x : {:?}",x); 
-   let mut account: bank_account = bank_account{
-      balance: 1000.0, 
-      owner: "John".to_string(),
-         };
-         //Immutable borrow to check the balance 
-         account.check_balance();
-
-         //Mutable Borrow to withdraw moeny from the account 
-         account.withdraw(45.5);
-
-         //Immutable borrow to check the balance again
-         account.check_balance();
-   //Variables and mutability
-   println!("Hello World");
-   let a : i32 = 10;
-   println!("the value of a is {}",a);
-   let mut b : i32 = 20;
-   println!("the value of b is {}",b);
-   b = 30;
-   println!("the value of b is {}",b);
-
-   //constants are immutable by default 
-   //constants cannot use the mut keyword 
-   //consts must be assigned a type at the time of declaration
-   //conts must be capital letter by default 
-   const Y: i32 = 0;
-   println!("the value of y is {}",Y);
-   println!("the value of x is {}",X);
-
-   //Shadowing 
-   let x = 5;
-   let x = x + 1;
-   let x = x * 2;
-   println!("the value of shadowed x is {}",x);
-   let spaces = "   ";
-   let spaces = spaces.len();
-   println!("the value of spaces is {}",spaces);
-
-
 }
 
-struct bank_account{
-   balance: f64,
+struct BankAccount{
    owner: String,
+   balance: f64,
+   account_number: u64,
 }
 
-impl bank_account{
-   fn withdraw(&mut self, amount: f64)
+impl BankAccount{
+
+   fn withdraw(&mut self, amount: f64) -> f64
    {
-      println!("withdrawing {} from the account",amount);
-      self.balance -= amount;
+      println!("Withdrawing {} from account",amount);
+      println!("New balance is {}",self.balance - amount);
+      println!("Balance is now {}",self.balance);
+      println!("The owner of the account is {}",self.owner);
+      self.balance - amount
    }
-   fn check_balance(&self)
+
+   fn check_balance(&self) -> f64
    {
-      println!("the balance of the account is {}",self.balance);
-      println!("the owner of the account is {}",self.owner);
+      println!("Checking balance");
+      println!("Balance is {}",self.balance);
+      return self.balance;
    }
-} 
+}
+
 fn hello_world() {
    println!("Hello World");
 
@@ -282,31 +321,12 @@ fn calculate_lengthTwo(s: &String) -> usize{
 //mutable reference 
 //once can be modified but not immutable reference
 //mutable reference can be modified but not immutable reference
-//mutable reference can be modified but not immutable reference
 //create reference by using & symbol
+// you can have either one mutable reference or multiple immutable references
 
- //VAriables and mutability 
- //--------------------------------
- //Variables are immutable by default 
- //Variables can be made mutable by using the mut keyword
- //Variables can be made mutable by using the mut keyword 
+ //a struct is a collection of fields
+ //allows you to group related data together
 
- //Shadowing 
- //If you create a new variable with the same name as a previous variable, the previous variable is shadowed.
- //The previous variable is no longer accessible.
-//THIS IS DIFFERENT THAN MARKING A VARIABLE AS MUTABLE
-
-//Comments in rust 
-//one line comment 
-
-//multi line comment 
-/*
-This is a multi line comment
-This is a multi line comment
-*/
-/* 
-everything in the comment is ignored by the compiler
-*/
-
-
- 
+ //Introduction to control FLOW IN RUST
+ //iF AND else expressions 
+ //an if expression allows you to branch ur code depending on a condition 
