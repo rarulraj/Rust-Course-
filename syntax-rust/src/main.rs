@@ -14,6 +14,10 @@
 //Structs are used to name and package related values together together 
 //Each field in a struct is named and has a type
 
+//error handling in rust 
+//error handling is used to handle errors that occur in the program
+
+
 fn main() {
 
    //If and else expressions 
@@ -30,6 +34,21 @@ fn main() {
    }
    //Soemtimes you want to check multiple conds 
    //you can use else if to check multiple conditions
+
+   enum Option<T>{
+      Some(T),//Represents a value that is present
+      None,//Represents a value that is not present
+   }
+   //Option is a generic type that can be either Some or None
+
+   //Approach 2 
+   enum Result<T,E>{
+      Ok(T),//Represents a value that is present
+      Err(E),//Represents a value that is not present
+   }
+   //Result is a generic type that can be either Ok or Err
+
+
 
    let ageTwo : u32 = 15;
    if ageTwo >= 18 {
@@ -245,8 +264,29 @@ fn main() {
    println!("home is {:?}",home);
    println!("loopback is {:?}",loopback);
 
-}
+   let result = divide(10.0, 2.0);
+   match result{
+      Some(result) => println!("Result is {}",result),
+      None => println!("Division by zero"),
+   }
+   let result = divide(10.0, 0.0);
+   match result{
+      Some(result) => println!("Result is {}",result),
+      None => println!("Division by zero"),
+   }
 
+   let result = divideTwo(10.0, 2.0);
+   match result{
+      Ok(result) => println!("Result is {}",result),
+      Err(error) => println!("Error is {}",error),
+   }
+   let result = divideTwo(10.0, 0.0);
+   match result{
+      Ok(result) => println!("Result is {}",result),
+      Err(error) => println!("Error is {}",error),
+
+}
+}
 
 struct BankAccount{
    owner: String,
@@ -380,6 +420,24 @@ fn print_length(s: &String){
 
 fn calculate_lengthTwo(s: &String) -> usize{
    s.len()
+}
+
+fn divide(numerator: f64, denominator: f64) -> Option<f64>
+{
+   if denominator == 0.0{
+      None
+   }else{
+      Some(numerator / denominator)
+   }
+}
+
+fn divideTwo(numerator: f64, denominator: f64) -> Result<f64,String>
+{
+   if denominator == 0.0{
+      Err(String::from("Division by zero"))
+   }else{
+      Ok(numerator / denominator)
+   }
 }
  //references and borrowing
  //safety and performance 
